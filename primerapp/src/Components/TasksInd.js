@@ -1,5 +1,6 @@
 import React,{Component} from "react"
 
+import PropTypes from "prop-types"; //sirve para definir el tipo de prop que se va a recibir
 //import "./Tasks.css" //se puede exportar un Archivo Css para estilizar los componentes
 
 const BtnDelete={ //estilos en linea con un objeto JS
@@ -40,5 +41,10 @@ class TasksInd extends Component {
         )
     }
 }
+
+TasksInd.propTypes={ // componente.propTypes  prop:el tipo de dato que se va a recibir
+    e:PropTypes.object.isRequired
+}
+
 
 export default TasksInd;
