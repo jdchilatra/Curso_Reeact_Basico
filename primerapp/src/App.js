@@ -1,48 +1,25 @@
-import React from "react"
+//import React from "react" //se importa react completo
+import React,{ Component } from "react"
 import "./App.css"
 
-// function Helloworld(props){ //Componentes estaticos como funciones
-//     return(
-//     <div>
-//         <div id="hello">Hello world  {props.mytext}</div>
-//     <div>{props.subtitle}</div>
-//     </div>
-//     )
-// }
+import task from "./sample/task.json"
+import Tasks from "./Components/Tasks"
 
-class Helloworld extends React.Component{ //clase helloworld que hereda  las propiedades de un componente
-    state={ //
-        show:true
-    }
-    toggle=() =>{
-            this.setState({show:!this.state.show})
+console.log(task)
+//class App extends React.Components  // se usa React.Components cuando se importa React
 
+class App extends Component {
+    state={
+        tasks:task
     }
-    render(){
-        if(this.state.show){
-            return(
-                <div>
-                    <div id="hello">Hello world  {this.props.mytext}</div>
-                    <div>{this.props.subtitle}</div>
-                    <button onClick={this.toggle}>toggle show</button>
-                </div>
-                )
-        }else{
-            return(
-                <div>
-                    <h1>No hay elementos</h1>
-                    <button onClick={this.toggle}>toggle show</button>
-                </div>
-            )
-        }
-        
+    //data=(e) => <p> {e.title} - {e.description} - {e.done}</p>
+    render(){// cada vez que se usa la función map se debe agregar la propiedad key al elemento retornado para que no se genere el warning
+        return(
+            <div>
+                <Tasks tasks={this.state.tasks}/>
+            </div>
+        )
     }
-}
-
-function App(){
-    return(
-        <div>Inicio <Helloworld mytext="he1" subtitle="subtitulo"/> <Helloworld mytext="he2"/> <Helloworld mytext="he3"/></div>
-    )
 }
 
 export default App;
