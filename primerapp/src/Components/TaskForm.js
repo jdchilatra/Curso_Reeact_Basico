@@ -1,12 +1,13 @@
 import React,{ Component } from "react";
 
-export default class TaskForm extends Component {
+export default class TaskForm extends Component { //contiene el formulario para Ingresar una nueva tarea
     state = {
         title:"",
         description:""
     }
     onSubmit=(e)=>{
-        console.log("submitting")
+        console.log(this.state)
+        this.props.addTask(this.state.title,this.state.description)
         e.preventDefault();
     }
     onChange=(e)=>{
@@ -15,6 +16,7 @@ export default class TaskForm extends Component {
         })
     }
     render(){
+        
         return(
             <form onSubmit={this.onSubmit}>
                 <input onChange={this.onChange} 
