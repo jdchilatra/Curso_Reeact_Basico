@@ -26,12 +26,30 @@ class App extends Component {
         })
     }
 
+    deleteTask=(id)=>{
+       const newTask = this.state.tasks.filter(task=>task.id!== id)
+       this.setState({
+           tasks:newTask
+       })
+       console.log(newTask)
+    }
+
+    checkDone=(id)=>{
+        const newTasks=this.state.tasks.map(task => {
+            if (task.id === id){
+                task.done=!task.done
+            }
+            return task
+        })
+        this.setState({task:newTasks})
+    }
+
     //data=(e) => <p> {e.title} - {e.description} - {e.done}</p>
     render(){// cada vez que se usa la función map se debe agregar la propiedad key al elemento retornado para que no se genere el warning
         return(
             <div>
                 <TaskForm addTask={this.addTask}/>
-                <Tasks tasks={this.state.tasks}/>
+                <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask} checkDone={this.checkDone}/>
             </div>
         )
     }

@@ -25,6 +25,7 @@ class TasksInd extends Component {
 
         
     }
+    
     render(){ //Task_Ind se convierte en una etiqueta de jsx "Componente" a la cual se le ponen propiedades, el componente también tiene su estado
         const {e} =this.props;
         return(
@@ -34,8 +35,8 @@ class TasksInd extends Component {
                     {e.description} - 
                     {e.done} - 
                     {e.id} 
-                <input   type="checkbox"></input>
-                <button style={BtnDelete}>X</button>
+                <input   type="checkbox" onChange={this.props.checkDone.bind(this, e.id)}/>
+                <button style={BtnDelete} onClick={this.props.deleteTask.bind(this, e.id)}>X</button>
                 </p>
             
         )
