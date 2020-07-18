@@ -5,6 +5,7 @@ import "./App.css"
 import task from "./sample/task.json"
 import Tasks from "./Components/Tasks"
 import TaskForm from "./Components/TaskForm"
+import Post from "./Components/Posts"
 
 console.log(task)
 //class App extends React.Components  // se usa React.Components cuando se importa React
@@ -50,6 +51,7 @@ class App extends Component {
             <div>
                 <TaskForm addTask={this.addTask}/>
                 <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask} checkDone={this.checkDone}/>
+                <Post/>
             </div>
         )
     }
