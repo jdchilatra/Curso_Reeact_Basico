@@ -1,5 +1,7 @@
 //import React from "react" //se importa react completo
 import React,{ Component } from "react"
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+
 import "./App.css"
 
 import task from "./sample/task.json"
@@ -49,9 +51,21 @@ class App extends Component {
     render(){// cada vez que se usa la función map se debe agregar la propiedad key al elemento retornado para que no se genere el warning
         return(
             <div>
-                <TaskForm addTask={this.addTask}/>
-                <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask} checkDone={this.checkDone}/>
-                <Post/>
+                <Router>
+                    <Link to = "/"> Home</Link>
+                    <br/>
+                    <Link to = "/posts"> Posts</Link>
+                    <Route exact path="/" render={() => {
+                        return <div>
+                            <TaskForm addTask={this.addTask}/>
+                            <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask} checkDone={this.checkDone}/>
+                        </div>
+                    }} >
+                    </Route>
+                    <Route path="/posts" component={Post}/>
+                    
+                </Router>
+            
             </div>
         )
     }
